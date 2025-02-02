@@ -7,7 +7,7 @@ type RestCountriesProps = {
   countries: Country[];
 };
 
-const RestCountries = async ({ countries }: RestCountriesProps) => {
+const RestCountries = ({ countries }: RestCountriesProps) => {
   const [cards, setNewCard] = useState(countries);
   return (
     <div>
