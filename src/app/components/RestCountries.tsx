@@ -11,7 +11,7 @@ const RestCountries = async ({ countries }: RestCountriesProps) => {
   const [cards, setNewCard] = useState(countries);
   return (
     <div>
-      <CountryGrid country={cards} />
+      <CountryGrid countries={cards} />
     </div>
   );
 };

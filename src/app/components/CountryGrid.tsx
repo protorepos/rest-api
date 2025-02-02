@@ -1,16 +1,14 @@
 import React from "react";
 import { Country } from "../Types";
 
-type CountryGridProps = {
-  country: Country[];
+type CountryProps = {
+  countries: Country[];
 };
-const CountryGrid = ({ country }: CountryGridProps) => {
+const CountryGrid = ({ countries }: CountryProps) => {
   return (
     <ul>
-      {country.map((c) => (
-        <li>
-          <CountryCard newCountry={country} />
-        </li>
+      {countries.map((country) => (
+        <li>{country.name}</li>
       ))}
     </ul>
   );
@@ -18,15 +16,11 @@ const CountryGrid = ({ country }: CountryGridProps) => {
 
 export default CountryGrid;
 
-type CountryCardProps = {
-  newCountry: Country[];
-};
-
-const CountryCard = ({ newCountry }: CountryCardProps) => {
-  return (
-    <>
-      <h1>{newCountry.name}</h1>
-      <p>{newCountry.population}</p>
-    </>
-  );
-};
+// const CountryCard = ({ country }: CountryProps) => {
+//   return (
+//     <>
+//       <h1>{c.name}</h1>
+//       <p>{c.population}</p>
+//     </>
+//   );
+// };
