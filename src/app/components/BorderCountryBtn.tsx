@@ -14,7 +14,7 @@ const BorderCountryBtn = async ({ id }: BorderCountryBtnProps) => {
   return (
     <div>
       {country.borders.map((name) => (
-        <Link href={`/countries/${country.alpha2Code}`}>
+        <Link key={name} href={`/countries/${name}`}>
           <button className="border-2 border-black p-3">{name}</button>
         </Link>
       ))}
