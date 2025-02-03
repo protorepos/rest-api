@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} mx-auto my-0 min-h-dvh max-w-screen-xl`}
+      className={`${GeistSans.variable} mx-auto my-0 min-h-dvh max-w-screen-xl bg-white dark:bg-blue-950`}
     >
       <body>
         <NavBar />
