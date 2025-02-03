@@ -46,7 +46,7 @@ const InputFilter = ({ allCountries, onSearchChange }: FilterProps) => {
           onSearchChange(onSearch());
         }}
         placeholder="Search for countries..."
-        className="rounded-md border-2 border-gray-100 px-2 py-1"
+        className="rounded-md border-2 border-gray-100 px-2 py-1 focus-within:border-blue-500"
       />
     </>
   );
