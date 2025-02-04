@@ -20,10 +20,11 @@ const FilterCountries = ({ allCountries, onSearchChange }: FilterProps) => {
 
 const InputFilter = ({ allCountries, onSearchChange }: FilterProps) => {
   const [searchString, setSearchString] = useState("");
-  const onSearch = () => {
+  const onSearch = (input: string) => {
+    console.log("SEARCHING: ", input);
     let newCountriesArr: Country[] = [];
 
-    if (searchString === "") {
+    if (input === "") {
       return allCountries;
     }
     for (let index = 0; index < allCountries.length; index++) {
@@ -42,8 +43,12 @@ const InputFilter = ({ allCountries, onSearchChange }: FilterProps) => {
         id=""
         value={searchString}
         onChange={(e) => {
+          const input =
+            searchString.length > 1
+              ? searchString + e.target.value.slice(-1)
+              : e.target.value;
           setSearchString(e.target.value);
-          onSearchChange(onSearch());
+          onSearchChange(onSearch(input));
         }}
         placeholder="Search for countries..."
         className="rounded-md border-2 border-gray-100 px-2 py-1 focus-within:border-blue-500"
