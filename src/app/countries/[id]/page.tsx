@@ -7,7 +7,7 @@ export default async function IndividualCountryPage({
 }: {
   params: { id: string };
 }) {
-  const id = params.id;
+  const id = (await params).id;
   const responce = await fetch(`https://www.apicountries.com/alpha/${id}`);
   const country = (await responce.json()) as Country;
 

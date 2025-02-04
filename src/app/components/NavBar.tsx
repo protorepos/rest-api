@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
-
-import { CiDark, CiLight } from "react-icons/ci";
+import React, { useState, useEffect } from "react";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const NavBar = () => {
@@ -23,9 +21,16 @@ const NavBar = () => {
 };
 
 const DarkModeBtn = () => {
-  const isToggled = document.documentElement.classList.contains("dark");
+  const [isClient, setIsClient] = useState<undefined | boolean>(undefined);
+  useEffect(() => {
+    const isToggled = document.documentElement.classList.contains("dark");
+    setIsClient(isToggled);
+  });
 
-  if (!isToggled) {
+  if (isClient === undefined) {
+    return null;
+  }
+  if (!isClient) {
     return <MdDarkMode />;
   }
   return <MdOutlineLightMode className="fill-white" />;
