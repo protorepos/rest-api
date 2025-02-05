@@ -13,7 +13,10 @@ const FilterCountries = ({ allCountries, onSearchChange }: FilterProps) => {
         allCountries={allCountries}
         onSearchChange={onSearchChange}
       />
-      <SelectFilter />
+      <SelectFilter
+        allCountries={allCountries}
+        onSearchChange={onSearchChange}
+      />
     </div>
   );
 };
@@ -57,10 +60,37 @@ const InputFilter = ({ allCountries, onSearchChange }: FilterProps) => {
   );
 };
 
-const SelectFilter = () => {
+const SelectFilter = ({ allCountries, onSearchChange }: FilterProps) => {
+  const [renderRegion, setRenderRegion] = useState(true);
+  const regions = allCountries.map((r) => r.region);
+  const indivRegions = new Set(regions);
+  const selectedRegions = Array.from(indivRegions);
   return (
     <>
-      <p>SelectFilter</p>
+      <select
+        name=""
+        id=""
+        onChange={(e) => {
+          const regions = e.target.value;
+          if (regions === "reset") {
+            onSearchChange(allCountries);
+            setRenderRegion(false);
+            return;
+          }
+          const filteredRegions = allCountries.filter(
+            (reg) => reg.region === regions,
+          );
+          onSearchChange(filteredRegions);
+          setRenderRegion(false);
+        }}
+      >
+        <option value="reset">
+          {renderRegion ? "Filter by region" : "All"}
+        </option>
+        {selectedRegions.map((region) => (
+          <option key={region}>{region}</option>
+        ))}
+      </select>
     </>
   );
 };
